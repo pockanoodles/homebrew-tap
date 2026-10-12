@@ -1,0 +1,38 @@
+# Style and syntax checks for every cask and formula in the tap.
+# Follows the template that `brew tap-new` generates.
+
+name: brew test-bot
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
+jobs:
+  test-bot:
+    runs-on: macos-26
+    permissions:
+      actions: read
+      checks: read
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@e99025eb970cfa124b8284a35463d87426917478 # 2026.09.28.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cleanup
+        run: brew test-bot --only-cleanup-before
+
+      - name: Setup
+        run: brew test-bot --only-setup
+
+      - name: Tap syntax
+        run: brew test-bot --only-tap-syntax
