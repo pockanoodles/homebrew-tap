@@ -24,7 +24,9 @@ brew install --cask erwin
 
 ## Updates
 
-Erwin updates itself. `brew upgrade --cask --greedy erwin` also works.
+`brew upgrade --cask erwin` installs each new release. Until releases are
+signed by Apple, Erwin can't update itself on macOS, so the cask clears the
+quarantine flag on the app it just checked against its sha256.
 
 `Casks/erwin.rb` is a copy of `packaging/homebrew/erwin.rb` in
 https://github.com/pockanoodles/erwin. That repo's
