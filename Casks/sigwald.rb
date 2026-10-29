@@ -1,15 +1,15 @@
-cask "erwin" do
+cask "sigwald" do
   arch arm: "arm64", intel: "x64"
 
   version "{{VERSION}}"
   sha256 arm:   "{{SHA256_MAC_ARM64}}",
          intel: "{{SHA256_MAC_X64}}"
 
-  url "https://github.com/pockanoodles/erwin/releases/download/v#{version}/Erwin-#{version}-mac-#{arch}.dmg",
-      verified: "github.com/pockanoodles/erwin/"
-  name "Erwin"
+  url "https://github.com/pockanoodles/sigwald/releases/download/v#{version}/Sigwald-#{version}-mac-#{arch}.dmg",
+      verified: "github.com/pockanoodles/sigwald/"
+  name "Sigwald"
   desc "Planner that reads your calendar and tasks and names the next one to start"
-  homepage "https://kaitosoeno.com/erwin"
+  homepage "https://kaitosoeno.com/sigwald"
 
   livecheck do
     url :url
@@ -18,7 +18,7 @@ cask "erwin" do
 
   depends_on macos: :monterey
 
-  app "Erwin.app"
+  app "Sigwald.app"
 
   # Releases are ad-hoc signed until there is an Apple Developer ID
   # (packaging/README.md). Gatekeeper refuses such an app while it carries the
@@ -27,15 +27,15 @@ cask "erwin" do
   # updates it. With notarization: drop this block and add `auto_updates true`.
   postflight do
     system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Erwin.app"]
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Sigwald.app"]
   end
 
   zap trash: [
-    "~/Library/Application Support/Erwin",
-    "~/Library/Caches/com.kaitosoeno.erwin",
-    "~/Library/Caches/com.kaitosoeno.erwin.ShipIt",
-    "~/Library/Logs/Erwin",
-    "~/Library/Preferences/com.kaitosoeno.erwin.plist",
-    "~/Library/Saved Application State/com.kaitosoeno.erwin.savedState",
+    "~/Library/Application Support/Sigwald",
+    "~/Library/Caches/com.kaitosoeno.sigwald",
+    "~/Library/Caches/com.kaitosoeno.sigwald.ShipIt",
+    "~/Library/Logs/Sigwald",
+    "~/Library/Preferences/com.kaitosoeno.sigwald.plist",
+    "~/Library/Saved Application State/com.kaitosoeno.sigwald.savedState",
   ]
 end
