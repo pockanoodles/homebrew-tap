@@ -1,9 +1,9 @@
 cask "sigwald" do
   arch arm: "arm64", intel: "x64"
 
-  version "{{VERSION}}"
-  sha256 arm:   "{{SHA256_MAC_ARM64}}",
-         intel: "{{SHA256_MAC_X64}}"
+  version "1.0.0"
+  sha256 arm:   "c573159820bcc0155d6ef2c0af55802112e4ef785ffabd27bd093962de49ee1b",
+         intel: "99f61db274c97b82a12ee2c83e5dd62460cfaca0cbf7479d54a69b43bd911865"
 
   url "https://github.com/pockanoodles/sigwald/releases/download/v#{version}/Sigwald-#{version}-mac-#{arch}.dmg",
       verified: "github.com/pockanoodles/sigwald/"
